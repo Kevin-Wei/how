@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516224551) do
+ActiveRecord::Schema.define(:version => 20130516212820) do
 
   create_table "steps", :force => true do |t|
     t.integer  "order"
     t.string   "todo"
+    t.integer  "task_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "task_id"
   end
+
+  add_index "steps", ["task_id"], :name => "index_steps_on_task_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "name"

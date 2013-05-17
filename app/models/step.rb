@@ -1,7 +1,7 @@
 class Step < ActiveRecord::Base
-  belongs_to :task
   attr_accessible :order, :todo
+  belongs_to :task
 
   validates :order, :numericality => {:greater_than_or_equal_to => 1}
-  validates :order, :uniqueness => true
+  validates_uniqueness_of :order, :scope => :task_id
 end
